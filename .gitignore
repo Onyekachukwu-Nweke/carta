@@ -1,0 +1,17 @@
+# Environment
+.env
+
+# uv
+.venv/
+uv.lock
+
+# Python
+__pycache__/
+*.py[cod]
+
+# Database
+*.db
+*.sqlite
+
+# Test output
+test_results.csv
