@@ -14,4 +14,4 @@ __pycache__/
 *.sqlite
 
 # Test output
-test_results.csv
+test-output.txt
