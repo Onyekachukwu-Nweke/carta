@@ -629,8 +629,9 @@ inventory_agent = Agent(
     system_prompt=(
         "You are the Inventory Specialist for Munder Difflin Paper Company. "
         "Check stock levels, flag items below their minimum, and restock when needed. "
-        "Use exact item names from the catalog. When restocking, order enough to bring "
-        "stock to at least 600 units above the current level."
+        "Use exact item names from the catalog. When restocking, always call "
+        "check_cash_balance first — only restock if the company can afford it. "
+        "When restocking, order enough to bring stock to at least 600 units above the current level."
     ),
 )
 
@@ -661,6 +662,13 @@ def get_all_inventory_status(date: str) -> dict:
 
 
 @inventory_agent.tool_plain
+def check_cash_balance(date: str) -> dict:
+    """Return current cash balance so restocking decisions are cash-aware."""
+    balance = get_cash_balance(date)
+    return {"date": date, "cash_balance": round(balance, 2), "can_restock": balance > 0}
+
+
+@inventory_agent.tool_plain
 def restock_item(item_name: str, quantity: int, date: str) -> dict:
     """Place a stock-order transaction to replenish an item."""
     unit_price = _get_unit_price(item_name)
@@ -687,7 +695,8 @@ quote_agent = Agent(
         "You are the Quoting Specialist for Munder Difflin Paper Company. "
         "Generate accurate quotes by referencing historical quote data and applying bulk discounts: "
         "5% for ≥50 units, 10% for ≥100 units, 15% for ≥500 units. "
-        "Always provide a clear line-item breakdown with base price, discount, and a grand total."
+        "Always provide a clear line-item breakdown with base price, discount, discounted unit price, and grand total. "
+        "After producing the quote, always call save_quote to persist it to the database."
     ),
 )
 
@@ -703,6 +712,29 @@ def check_item_stock(item_name: str, date: str) -> dict:
     """Check available stock for a single item before quoting."""
     result = get_stock_level(item_name, date)
     return {"item_name": item_name, "current_stock": int(result["current_stock"].iloc[0])}
+
+
+@quote_agent.tool_plain
+def save_quote(
+    total_amount: float,
+    explanation: str,
+    job_type: str,
+    order_size: str,
+    event_type: str,
+    date: str,
+) -> dict:
+    """Persist a generated quote to the quotes table so future searches can find it."""
+    row = pd.DataFrame([{
+        "request_id": None,
+        "total_amount": round(total_amount, 2),
+        "quote_explanation": explanation,
+        "order_date": date,
+        "job_type": job_type,
+        "order_size": order_size,
+        "event_type": event_type,
+    }])
+    row.to_sql("quotes", db_engine, if_exists="append", index=False)
+    return {"saved": True, "total_amount": round(total_amount, 2), "date": date}
 
 
 @quote_agent.tool_plain
@@ -730,11 +762,21 @@ order_agent = Agent(
     name="order_agent",
     system_prompt=(
         "You are the Order Fulfillment Specialist for Munder Difflin Paper Company. "
-        "Verify that sufficient stock exists before recording each sale. "
-        "Record every confirmed sale as a transaction. "
-        "Report delivery timelines for every fulfilled item."
+        "For each item in the order: call verify_stock, then call lookup_item_price to get the unit price "
+        "(use the discounted price from the order details if provided, otherwise use the catalog price), "
+        "then call fulfill_order to record the sale, and call check_delivery_timeline for the ETA. "
+        "If stock is insufficient for an item, report it clearly but continue with the remaining items."
     ),
 )
+
+
+@order_agent.tool_plain
+def lookup_item_price(item_name: str) -> dict:
+    """Return the catalog unit price for an item."""
+    price = _get_unit_price(item_name)
+    if price == 0.0:
+        return {"error": f"Unknown item: {item_name}"}
+    return {"item_name": item_name, "catalog_unit_price": price}
 
 
 @order_agent.tool_plain
@@ -788,12 +830,16 @@ carta = Agent(
     system_prompt=(
         "You are CARTA — Customer Agent for Reordering, Trading & Automation — the central "
         "orchestration system for Munder Difflin Paper Company.\n\n"
-        "For every customer request, follow this sequence:\n"
-        "1. Call call_inventory_agent to check stock for the requested items and restock any "
-        "   that are below their minimum level.\n"
-        "2. Call call_quote_agent to generate a detailed, discount-aware quote.\n"
-        "3. Call call_order_agent to record the sale and confirm delivery dates.\n"
-        "4. Return a professional summary to the customer with pricing and delivery information.\n\n"
+        "For every customer request, follow this exact sequence:\n"
+        "1. Call call_inventory_agent with the list of requested items and the date to check stock "
+        "   and trigger restocking for any low items.\n"
+        "2. Call call_quote_agent with the full customer request and date to generate a detailed "
+        "   discount-aware quote. The quote agent will also save the quote to the database.\n"
+        "3. Call call_order_agent passing the item names, quantities, and discounted prices from "
+        "   the quote (e.g. 'Item: A4 paper, qty: 500, discounted_unit_price: $0.0425') and the date "
+        "   to record the sales transactions.\n"
+        "4. Optionally call get_financial_report to include updated financials in your response.\n"
+        "5. Return a friendly, professional summary with the quote breakdown, total, and delivery dates.\n\n"
         f"Product catalog (use exact item names):\n{_catalog}"
     ),
 )
@@ -817,10 +863,25 @@ def call_quote_agent(request: str, date: str) -> str:
     prompt = (
         f"Date: {date}.\nCustomer request: {request}\n"
         "Search quote history for comparable orders, then produce a detailed quote "
-        "with bulk discounts and a clear line-item breakdown."
+        "with bulk discounts, showing: item name, quantity, base unit price, discount %, "
+        "discounted unit price, and line total. Include the grand total at the end. "
+        "After generating the quote, call save_quote to persist it."
     )
     result = quote_agent.run_sync(prompt)
     return result.output
+
+
+@carta.tool_plain
+def get_financial_report(date: str) -> dict:
+    """Return a full financial snapshot: cash balance, inventory value, and top sellers."""
+    report = generate_financial_report(date)
+    return {
+        "date": date,
+        "cash_balance": report["cash_balance"],
+        "inventory_value": report["inventory_value"],
+        "total_assets": report["total_assets"],
+        "top_selling_products": report["top_selling_products"],
+    }
 
 
 @carta.tool_plain
@@ -853,7 +914,7 @@ def run_test_scenarios():
             quote_requests_sample["request_date"], format="%m/%d/%y", errors="coerce"
         )
         quote_requests_sample.dropna(subset=["request_date"], inplace=True)
-        quote_requests_sample = quote_requests_sample.sort_values("request_date")
+        quote_requests_sample = quote_requests_sample.sort_values("request_date").reset_index(drop=True)
     except Exception as e:
         print(f"FATAL: Error loading test data: {e}")
         return
@@ -877,7 +938,11 @@ def run_test_scenarios():
         # Process request
         request_with_date = f"{row['request']} (Date of request: {request_date})"
 
-        response = call_carta(request_with_date)
+        try:
+            response = call_carta(request_with_date)
+        except Exception as e:
+            response = f"[CARTA error: {e}]"
+            print(f"ERROR on request {idx+1}: {e}")
 
         # Update state
         report = generate_financial_report(request_date)
