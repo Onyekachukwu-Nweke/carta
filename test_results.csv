@@ -1,295 +1,639 @@
 request_id,request_date,cash_balance,inventory_value,response
-1,2025-04-01,45059.7,4940.299999999999,"It appears that all requested items—A4 glossy paper, heavy cardstock (white), and colored paper (assorted colors)—are currently out of stock as of April 1, 2025. Unfortunately, without stock, I am unable to generate a quote for these items.
+1,2025-04-01,45124.7,4875.3,"Here's the summary of your order for the ceremony supplies:
 
-The status of the requested items is as follows:
-- **A4 glossy paper**: Out of stock. Restock failed due to an unknown item error.
-- **Heavy cardstock (white)**: Out of stock. Restock failed.
-- **Colored paper (assorted colors)**: Out of stock. Restock failed.
+### Quote Breakdown
+| Item Name          | Quantity | Base Unit Price | Discount % | Discounted Unit Price | Line Total |
+|---------------------|----------|------------------|------------|------------------------|------------|
+| A4 Glossy Paper     | 200      | $0.20            | 10%        | $0.18                  | $36.00     |
+| Heavy Cardstock     | 100      | $0.15            | 10%        | $0.135                 | $13.50     |
+| Colored Paper       | 100      | $0.10            | 10%        | $0.09                  | $9.00      |
 
-Would you like to verify the item names or check for alternative supplies? I’m here to help!"
-2,2025-04-03,44879.7,4940.299999999999,"It looks like we are currently out of stock for both colorful poster paper and party streamers, and unfortunately, I cannot provide a quote for them at this time. Here's a summary of the inventory situation:
+### Grand Total: $58.50
 
-### Inventory Summary as of 2025-04-03:
-1. **Colored paper**
-   - Current Stock: 788
-   - Minimum Stock Level: 143
-   - Needs Restock: No
+### Fulfillment Details
+- **A4 Glossy Paper**: 
+  - Quantity: 200 sheets
+  - Total Price: $40.00
+  - Estimated Delivery: April 5, 2025
 
-2. **Poster paper**
-   - Current Stock: 0
-   - Minimum Stock Level: 100
-   - Needs Restock: Yes
-   - **Restock Action:** 600 units ordered (Transaction ID: 20)
-   - **Estimated Delivery:** 2025-04-07
+- **Heavy Cardstock**:
+  - Quantity: 100 sheets
+  - Total Price: $15.00
+  - Estimated Delivery: April 2, 2025
 
-3. **Party streamers**
-   - Current Stock: 0
-   - Minimum Stock Level: 100
-   - Needs Restock: Yes
-   - **Restock Action:** 600 units ordered (Transaction ID: 18)
-   - **Estimated Delivery:** 2025-04-07
+- **Colored Paper**:
+  - Quantity: 100 sheets
+  - Total Price: $10.00
+  - Estimated Delivery: April 2, 2025
 
-Since we are restocking these items, I recommend allowing a little time for fulfillment to ensure their availability for your parade on April 15, 2025.
+### Overall Status
+- All items are in stock and were successfully fulfilled. The estimated delivery dates for heavy cardstock and colored paper are April 2, 2025, while the glossy paper will be delivered by April 5, 2025. 
 
-Would you like to add any alternative products or proceed with these items for a future order? Please let me know how you'd like to proceed!"
-3,2025-04-04,44879.7,4940.299999999999,"It looks like there are some challenges with fulfilling your order:
-
-1. **A4 paper**: We currently have 272 sheets available, which is insufficient for your request of 10,000 sheets.
-2. **A3 paper**: There is no stock available.
-3. **Printer paper**: There is no stock available.
-
-Given the current stock limitations, we cannot fully fulfill your request for 10,000 sheets of A4 paper, 5,000 sheets of A3 paper, and 500 reams of printer paper.
-
-Would you like to adjust your order based on the available stock, or do you have alternative products in mind? Please let me know how you would like to proceed!"
-4,2025-04-05,44831.7,4940.299999999999,"It appears that while we have restocked the recycled paper, the high-quality recycled cardstock you requested is not available at the moment, so I cannot generate a quote for that item. However, here is the inventory summary as of April 5, 2025:
-
-### Inventory Summary
-- **Recycled Paper**:
-  - Current Stock: 0 units 
-  - **Action Taken**: Restocked with 600 units.
-  - Total Cost: $48.00
-  - Estimated Delivery: April 9, 2025 
-
-- **Cardstock**: 
-  - Current Stock: 595 units 
-  - No restock action needed.
-
-- **A4 Paper**: 
-  - Current Stock: 272 units 
-  - No restock action needed.
-
-Since the high-quality recycled cardstock is currently out of stock, would you like to explore other types of cardstock or make adjustments to your order? Please let me know how you would like to proceed!"
-5,2025-04-05,44711.7,4940.299999999999,"Thank you for your order request for 500 sheets of 8.5""x11"" colored paper, 300 sheets of cardstock in various colors, and 200 rolls of decorative washi tape for delivery by April 15, 2025. 
-
-Unfortunately, as of April 5, 2025, all the requested items are out of stock:
-
-- **8.5""x11"" colored paper**: Currently out of stock.
-- **Cardstock**: Currently out of stock.
-- **Decorative washi tape**: Currently out of stock.
-
-However, we have restocked the decorative washi tape with 600 units due to its critical stock level. 
-
-Since we are unable to fulfill your order for colored paper and cardstock at this time, I suggest checking back later or considering alternative products. If there are other items you'd like to explore or if you need assistance with anything else, please let me know!"
-6,2025-04-06,44687.7,4910.299999999999,"Thank you for your order! Here's a summary of what has been processed:
+Thank you for your order! If you need anything else, feel free to reach out."
+2,2025-04-03,45174.7,4825.3,"Here’s a summary of your order request placed on April 3, 2025:
 
 ### Order Details
-1. **Standard Copy Paper**:
-   - **Quantity**: 300 sheets
-   - **Unit Price**: $0.04
-   - **Total Price**: $12.00
-   - **Estimated Delivery Date**: April 10, 2025
+1. **Colored Poster Paper**
+   - **Quantity Ordered**: 500 sheets
+   - **Unit Price**: $0.085
+   - **Total Fulfilled**: 500 sheets
+   - **Estimated Delivery Date**: **April 7, 2025**
 
-2. **Cardstock**:
-   - **Quantity**: 200 sheets
-   - **Unit Price**: $0.15
-   - **Total Price**: $30.00
-   - **Estimated Delivery Date**: April 10, 2025
+2. **Party Streamers**
+   - **Quantity Ordered**: 300 rolls
+   - **Total Fulfilled**: 0 rolls (out of stock)
+   - **Back-Ordered**: 300 rolls
+   - **Estimated Delivery After Restock**: **April 23, 2025** (Restocking scheduled for April 19, 2025)
 
-### Total Cost
-- **Total**: $42.00
+### Financial Summary
+- **Total for Colored Poster Paper**: $42.50
+- **Total for Party Streamers**: $0.00 (back-ordered)
+- **Total Order Amount**: $42.50 
 
-### Additional Notes:
-- Unfortunately, the colorful construction paper you requested is currently out of stock and was not included in this order.
-- A restock of 600 units for construction paper has been ordered and is expected to arrive on April 10, 2025. If you wish to place an order for that at a later time, please let me know!
+### Notes
+- **Balloons** were not available for quoting or ordering and will need to be sourced separately.
+- The back-ordered party streamers will be fulfilled pending restock on April 19.
 
-If you have any further questions or need additional assistance, feel free to ask!"
-7,2025-04-07,44459.7,4910.299999999999,"It looks like there's a stock issue with your requested items. Here's the current status:
-
-### Inventory Summary as of April 7, 2025:
-- **Glossy paper**: 587 sheets available (No need for restock)
-- **Matte paper**: Currently out of stock. 600 units are being restocked, expected delivery by April 11, 2025.
-- **Large poster paper (24x36 inches)**: 699 sheets available (No need for restock)
-- **Heavyweight paper**: Currently out of stock. 600 units are being restocked, expected delivery by April 11, 2025.
-
-Unfortunately, I was unable to generate a quote for your order since the **Matte paper** and **Heavyweight paper** were both out of stock at the time of your request. 
-
-If you're open to alternatives or would like to change your order, please let me know! Alternatively, you can check back later if you’d like to confirm restock availability."
-8,2025-04-07,44459.7,4910.299999999999,"It seems there was an issue with checking stock for your requested items due to them not being recognized in the system. Here’s the inventory status for the items you requested:
-
-- **A4 glossy paper**: Out of stock
-- **A4 matte paper**: Out of stock
-- **A5 colored paper**: Out of stock
-- **A4 recycled paper**: Out of stock
-
-Unfortunately, we currently do not have any of these items in stock, and restocking attempts were unsuccessful. Unfortunately, this means we cannot proceed with your order for the upcoming ceremony on April 15, 2025.
-
-You may want to consider alternative items that are in stock, or I can assist you with a different request or a modified order. Please let me know how you'd like to proceed!"
-9,2025-04-07,44429.7,4910.299999999999,"Unfortunately, we found that the following items you requested for your reception order are currently out of stock:
-
-1. **A4 white printer paper**
-2. **A3 glossy paper**
-3. **100% recycled kraft paper envelopes**
-
-The only item that needed restocking was the envelopes, and we've already arranged to restock 600 units. The expected delivery date for the restock of envelopes is April 11, 2025.
-
-Given that we cannot generate a quote without available inventory, would you like to explore alternative items or wait until the inventory is replenished? Let me know how you would like to proceed!"
-10,2025-04-08,44441.259999999995,4896.699999999999,"Thank you for your order! Here's a summary of your request:
-
-### Order Details
-- **Item:** A4 paper
-- **Requested Quantity:** 500 sheets
-- **Quantity Fulfilled:** 272 sheets
-- **Discounted Unit Price:** $0.0425 per sheet
-- **Total Price for A4 paper:** $11.56
-- **Estimated Delivery Date:** April 12, 2025
-
-### Stock Information
-- **Current Stock of A4 Paper:** 272 sheets (sufficient for the order)
-
-### Note
-Unfortunately, the 200 sheets of cardstock you requested were not available for fulfillment. 
-
-If there's anything else you’d like to add or if you have other questions, feel free to ask!"
-11,2025-04-08,44429.259999999995,4896.699999999999,"I'm sorry, but it appears that the items you've requested—200 sheets of colorful cardstock, 500 sheets of standard printer paper, and 100 paper napkins—are currently out of stock. 
-
-However, we have successfully restocked the paper napkins with 600 units, which will be delivered by April 12, 2025.
-
-Unfortunately, without the other items in stock, I cannot provide a quote or complete the order for those. Would you like to explore alternative products or quantities? Let me know how I can assist you further!"
-12,2025-04-08,44484.259999999995,4841.7,"Thank you for your order! Here’s a summary of your request and details on the items:
-
-### Order Summary:
-1. **Glossy paper**
-   - **Quantity:** 500 sheets
-   - **Discounted Unit Price:** $0.20
-   - **Total Cost:** $100.00
-   - **Estimated Delivery Date:** April 12, 2025
-
-2. **Cardstock**
-   - **Quantity:** 300 sheets
-   - **Discounted Unit Price:** $0.15
-   - **Total Cost:** $45.00
-   - **Estimated Delivery Date:** April 12, 2025
-
-### Total Cost:
-- **Total Amount Due:** $145.00
-
-Your order has been successfully recorded, and both items will be delivered by April 12, 2025. If you need any further assistance, feel free to ask!"
-13,2025-04-08,44381.659999999996,4944.3,"It appears that we currently do not have stock available for both the A3 glossy paper and the A4 matte paper as of April 8, 2025. Specifically:
-
-- **Glossy paper**: 
-  - Current stock level is too low, and we have restocked 513 units, estimated delivery by April 12, 2025.
-  
-- **Matte paper**: 
-  - Current stock is sufficient with 600 units available. However, there are no A4 sheets specifically stocked, which affects our ability to quote.
-
-Since we cannot provide a quote for A3 glossy and A4 matte paper at this time, please let me know if you would like to explore alternative products or if you want to check availability for different items. Thank you!"
-14,2025-04-09,44351.659999999996,4974.3,"Here's a summary of your order request for high-quality paper supplies:
-
-1. **Requested Items:**
-   - 5,000 sheets of A4 paper
-   - 2,000 sheets of poster paper
-   - 500 sheets of cardstock
-
-2. **Current Inventory Status:**
-   - **A4 paper:** 
-     - Current stock is 0 units. 
-     - Successfully restocked with 600 units, estimated delivery by April 13, 2025.
-   - **Poster paper:** 
-     - Current stock is 0 units. 
-     - Restock attempt failed due to an error indicating that the item is not recognized in the inventory system.
-   - **Cardstock:** 
-     - Current stock is 0 units. 
-     - Restock attempt also failed for the same reason.
-
-Unfortunately, we cannot fulfill your entire request at this time, as both poster paper and cardstock could not be restocked due to inventory issues. 
-
-Please review the inventory catalog for the correct names of these items, or let me know if you would like to adjust your order with alternative options. I am here to assist you further!"
-15,2025-04-12,44351.659999999996,4974.3,"Thank you for your request for high-quality paper supplies for your upcoming demonstration. Unfortunately, we currently do not have any stock available for the following items as of April 12, 2025:
-
-1. **A4 White Paper** - Current Stock: 0
-2. **A3 Colored Paper** - Current Stock: 0
-3. **Cardstock** - Current Stock: 0
-
-This means we are unable to fulfill any part of your order at this time. As a result, we cannot generate a quote for the requested quantities.
-
-If you would like to explore other options or need assistance with anything else, please let me know!"
-16,2025-04-13,44351.659999999996,4974.3,"Here's the summary of your request as of April 13, 2025:
+If you have further questions or require additional assistance, please feel free to ask!"
+3,2025-04-04,45174.7,4825.3,"Here is the status of your order request for 10,000 sheets of A4 paper, 5,000 sheets of A3 paper, and 500 reams of printer paper:
 
 ### Stock Status:
-- **A4 paper**: Available (600 sheets in stock, no restock needed).
-- **Colored construction paper**: Out of stock.
-- **Poster board**: Out of stock.
+1. **A4 paper**: 
+   - **Available**: 10,000 sheets can be delivered by April 15, 2025.
+   - **Restocked**: 0 sheets since current stock is sufficient.
 
-### Quote for 500 sheets of A4 Paper:
-| Item Name   | Quantity | Base Unit Price | Discount % | Discounted Unit Price | Line Total |
-|-------------|----------|------------------|------------|-----------------------|------------|
-| A4 Paper    | 500      | $0.05            | 15%        | $0.0425               | $21.25     |
+2. **A3 paper**: 
+   - **Out of stock**: 0 sheets available. Unable to restock due to it being an unrecognized item in our catalog.
+   
+3. **Printer paper**: 
+   - **Out of stock**: 0 reams available. Unable to restock due to it being an unrecognized item in our catalog.
+
+### Quote Breakdown for Available Items:
+| Item Name        | Quantity | Base Unit Price | Discount % | Discounted Unit Price | Line Total |
+|------------------|----------|------------------|------------|-----------------------|------------|
+| A4 paper         | 10,000   | $0.05            | 15%        | $0.0425               | $425.00    |
 
 ### Grand Total:
-- **A4 Paper**: $21.25
+- **A4 Paper Total**: $425.00
+
+### Availability Notes:
+- **A4 Paper**: Available for delivery on the requested date of April 15, 2025.
+- **A3 Paper and Printer Paper**: Currently out of stock, with no delivery date available.
+
+Would you like to proceed with the order for the available A4 paper only, or would you like to make any changes to your request? Please provide specific names for the A3 and printer paper, and I can assist further!"
+4,2025-04-05,45178.799999999996,4812.8,"### Order Summary for Your Request (Date of Request: April 5, 2025)
+
+#### Items Ordered:
+1. **Recycled Cardstock**
+   - **Quantity Ordered:** 495 sheets
+   - **Discounted Price per Sheet:** $0.1275
+   - **Total Price:** $39.60
+   - **Estimated Delivery Date:** April 9, 2025
+
+2. **A4 Paper**
+   - **Quantity Ordered:** 250 sheets
+   - **Discounted Price per Sheet:** $0.045
+   - **Total Price:** $12.50
+   - **Estimated Delivery Date:** April 9, 2025
+
+### Grand Total:
+- **Total Amount:** $52.10
+
+#### Notes:
+- **Back-Order**: You originally requested 500 sheets of cardstock; however, only 495 sheets are currently available. The remaining 5 sheets will require a separate restock.
+- **Delivery Date**: Both items will be delivered by **April 9, 2025**.
+
+If you have any further questions or need assistance, please let me know!"
+5,2025-04-05,45242.6,4749.0,"### Order Summary
+
+**Date of Request:** April 5, 2025
+
+#### Items Ordered:
+1. **Colored Paper** 
+   - Quantity Requested: 500 sheets 
+   - Fulfilled: 188 sheets 
+   - **Price:** 188 sheets at $0.10 each
+   - **Total:** $18.80
+   - **Estimated Delivery:** April 9, 2025
+   - **Back-Ordered:** 312 sheets (will be delivered by April 23, 2025)
+
+2. **Cardstock** 
+   - Quantity Requested: 300 sheets 
+   - Fulfilled: 300 sheets 
+   - **Price:** 300 sheets at $0.15 each
+   - **Total:** $45.00
+   - **Estimated Delivery:** April 9, 2025
+
+3. **Decorative Washi Tape** 
+   - Quantity Requested: 200 rolls 
+   - Fulfilled: 0 rolls 
+   - **Price:** $0.00
+   - **Back-Ordered:** 200 rolls (will be delivered by April 19, 2025)
+
+#### Financial Breakdown:
+- **Subtotal for Colored Paper:** $18.80
+- **Subtotal for Cardstock:** $45.00
+- **Subtotal for Decorative Washi Tape:** $0.00
+- **Grand Total:** $115.40 (including discounts)
+
+### Summary of Deliveries:
+- **Colored Paper:** 188 sheets by April 9, 2025; 312 sheets back-ordered (delivered by April 23, 2025).
+- **Cardstock:** 300 sheets by April 9, 2025.
+- **Decorative Washi Tape:** 200 rolls back-ordered (delivered by April 19, 2025).
+
+If you have any further questions or need assistance, feel free to reach out!"
+6,2025-04-06,45180.85,4779.75,"### Order Summary for April 6, 2025
+
+You have successfully placed an order for the following items:
+
+1. **Colored Construction Paper**
+   - **Quantity Ordered**: 500 sheets
+   - **Quantity Fulfilled**: 500 sheets
+   - **Unit Price**: $0.07
+   - **Total Cost**: $35.00
+   - **Estimated Delivery**: April 10, 2025
+
+2. **White Printer Paper (Standard Copy Paper)**
+   - **Quantity Ordered**: 300 sheets
+   - **Status**: **Back-ordered** (300 units) 
+   - **Estimated Delivery**: April 10, 2025
+
+3. **Cardstock in Various Colors**
+   - **Quantity Ordered**: 200 sheets
+   - **Quantity Fulfilled**: 195 sheets (5 sheets short)
+   - **Unit Price**: $0.15
+   - **Total Cost for Fulfilling Units**: $29.25
+   - **Estimated Delivery**: April 10, 2025
+
+### Total Costs:
+- **Cost of Construction Paper**: $35.00
+- **Cost of Cardstock Fulfilled**: $29.25
+- **Total for Fulfilled Items**: $64.25
+
+### Notes:
+- **Back-ordered Item**: 300 sheets of white printer paper will arrive on April 10, 2025.
+- A total of 5 sheets of cardstock remains back-ordered due to current inventory levels.
+
+Thank you for your order! If you have any further questions or need additional items, feel free to reach out."
+7,2025-04-07,45598.25,4402.35,"### Order Summary
+
+Thank you for your order request for various types of paper supplies for your upcoming exhibition. Here’s the detailed breakdown:
+
+#### Quote Breakdown
+| Item Name                               | Quantity | Base Unit Price | Discount % | Discounted Unit Price | Line Total  |
+|-----------------------------------------|----------|------------------|------------|-----------------------|-------------|
+| Glossy paper                            | 500      | $0.20            | 15%        | $0.17                 | $85.00      |
+| Matte paper (on restock delivery date) | 1000     | $0.18            | 15%        | $0.153                | $153.00     |
+| Large poster paper (24x36 inches)      | 300      | $1.00            | 10%        | $0.90                 | $270.00     |
+| Heavyweight paper (on restock delivery date) | 200   | $0.20            | 10%        | $0.18                 | $36.00      |
+
+**Grand Total: $544.00**
+
+#### Fulfillment Details
+- **Glossy Paper**: 
+  - **Requested**: 500 sheets
+  - **Fulfilled**: 387 sheets
+  - **Back-Ordered**: 113 sheets
+  - **Total Fulfilled Price**: $77.40
+  - **Estimated Delivery**: April 11, 2025
+- **Matte Paper**: 
+  - **Requested**: 1000 sheets
+  - **Available**: 0 sheets
+  - **Back-Ordered**: 1000 sheets
+  - **Estimated Delivery**: April 19, 2025
+- **Large Poster Paper (24x36 inches)**: 
+  - **Requested**: 300 sheets
+  - **Fulfilled**: 300 sheets
+  - **Total Fulfilled Price**: $300.00
+  - **Estimated Delivery**: April 11, 2025
+- **Heavyweight Cardstock**: 
+  - **Requested**: 200 sheets
+  - **Available**: 0 sheets
+  - **Back-Ordered**: 200 sheets
+  - **Estimated Delivery**: April 19, 2025
+
+### Summary of Back-Orders
+- **Glossy Paper**: 113 sheets back-ordered — will restock by April 19, 2025.
+- **Matte Paper**: 1000 sheets back-ordered — will restock by April 19, 2025.
+- **Heavyweight Cardstock**: 200 sheets back-ordered — will restock by April 19, 2025.
+
+Your order is being processed, and the fulfilled items will arrive by April 11, 2025. If you have any questions or need further assistance, feel free to reach out!"
+8,2025-04-07,45666.65,4342.349999999999,"### Summary of Your Order - April 7, 2025
+
+**Items Requested:**
+- **500 sheets of A4 glossy paper**
+  - **Back-ordered**: 500 sheets
+  - **Estimated Delivery Date**: April 19, 2025
+
+- **1000 sheets of A4 matte paper**
+  - **Back-ordered**: 1000 sheets
+  - **Estimated Delivery Date**: April 19, 2025
+
+- **2000 sheets of A5 colored paper**
+  - **Fulfilled**: 600 sheets
+  - **Estimated Delivery Date**: April 11, 2025
+  - **Total Cost for Fulfilled Units**: $60.00
+
+- **3000 sheets of A4 recycled paper**
+  - **Fulfilled**: 105 sheets
+  - **Estimated Delivery Date**: April 11, 2025
+  - **Total Cost for Fulfilled Units**: $8.40
+
+---
+
+### Fulfillment Breakdown
+- **Immediate Fulfillment**:
+  - **A5 Colored Paper**: 600 sheets will arrive on April 11, 2025.
+  - **A4 Recycled Paper**: 105 sheets will also arrive on April 11, 2025.
+
+- **Back-Ordered Items**:
+  - **A4 Glossy Paper**: 500 sheets will be delivered on April 19, 2025.
+  - **A4 Matte Paper**: 1000 sheets will also be delivered on April 19, 2025.
+
+**Total Cost for Fulfilled Items**: $68.40
+
+If you have any more requests or need further assistance, feel free to ask!"
+9,2025-04-07,45672.75,4336.249999999999,"### Order Summary for Reception Supplies
+
+**Order Date:** April 7, 2025  
+**Requested Delivery Date:** April 10, 2025  
+
+#### Quote Breakdown
+| Item Name                                      | Requested | Fulfilled | Back-ordered | Price per Unit | Total Price |
+|------------------------------------------------|-----------|-----------|--------------|-----------------|-------------|
+| A4 White Printer Paper (available April 14)   | 200 sheets | 22 sheets | 178 sheets    | $0.05          | $1.10       |
+| A3 Glossy Paper (available April 14)          | 100 sheets | 0 sheets  | 100 sheets    | $0.20          | $0.00       |
+| 100% Recycled Kraft Paper Envelopes (available April 14) | 50 packets  | 50 packets | 0 packets      | $0.10          | $5.00       |
+
+### Immediate Fulfillment
+- **Fulfilled Items:**
+  - 22 sheets of A4 paper
+  - 50 packets of recycled kraft paper envelopes
+
+- **Total Immediate Price:** $6.10  
+- **Estimated Delivery for Fulfilled Items:** April 8, 2025
+
+### Back-Ordered Items
+- **178 sheets** of A4 paper — will be restocked on April 14, 2025.  
+- **100 sheets** of Glossy paper — will be restocked on April 14, 2025.  
+
+### Financial Snapshot (as of April 7, 2025)
+- **Cash Balance:** $45,672.75  
+- **Inventory Value:** $4,336.25  
+- **Total Assets:** $50,009.00  
+- **Top Selling Products Include:** 
+  - Large poster paper (24x36 inches)
+  - Colored paper
+  - Glossy paper  
+  - Cardstock
+
+Feel free to reach out if you have any further questions or require adjustments to your order!"
+10,2025-04-08,45672.75,4336.249999999999,"Here is a summary of your order request for 500 sheets of A4 paper and 200 sheets of cardstock:
+
+### Quote Summary
+- **Order Date**: April 8, 2025
+- **Total Amount**: $48.25
+- **Line Item Breakdown**:
+  1. **A4 Paper**:
+      - Quantity: 500 sheets
+      - Discounted Price per Unit: $0.0425 
+      - Total: $21.25
+  2. **Cardstock** (Available for delivery on April 14, 2025):
+      - Quantity: 200 sheets
+      - Discounted Price per Unit: $0.135 
+      - Total: $27.00
+
+### Fulfillment
+- **A4 Paper**:
+  - Status: Back-ordered (0 sheets available).
+- **Cardstock**:
+  - Status: Back-ordered (0 sheets available).
+
+### Estimated Delivery Dates
+- Both items are currently back-ordered. While stock was available, they could not be fulfilled immediately.
+- **A4 paper** and **Cardstock** are estimated to be available for delivery by **April 14, 2025**.
+
+Please let me know if you'd like to proceed with this order, or if there's anything else you require!"
+11,2025-04-08,45562.75,4456.25,"Your order has been successfully processed! Here's a summary of your request:
+
+### Order Details:
+- **Items Ordered:**
+  1. **Colored Cardstock**
+     - **Quantity:** 200 sheets
+     - **Price:** $0.135 per sheet (after 10% discount)
+     - **Total:** $27.00
+     - **Estimated Delivery:** April 12, 2025
+  2. **Standard Copy Paper**
+     - **Quantity:** 500 sheets
+     - **Price:** $0.034 per sheet (after 15% discount)
+     - **Total:** $17.00
+     - **Estimated Delivery:** April 12, 2025
+  3. **Paper Napkins**
+     - **Quantity:** 100 pieces
+     - **Price:** $0.018 per piece (after 10% discount)
+     - **Total:** $1.80
+     - **Estimated Delivery:** April 9, 2025
+
+### Financial Summary:
+- **Subtotal:** $45.80 
+- **Grand Total:** $45.80 
+
+### Fulfillment:
+All items will be delivered as follows:
+- **Paper Napkins:** Arriving by April 9, 2025
+- **Colored Cardstock & Standard Copy Paper:** Both arriving by April 12, 2025
+
+Thank you for choosing Munder Difflin Paper Company! If you need further assistance or wish to place another order, feel free to let me know."
+12,2025-04-08,45587.75,4431.25,"### Order Summary for Upcoming Show
+
+**Order Date:** April 8, 2025  
+**Requested Delivery Date:** April 15, 2025
+
+#### Quote Breakdown
+1. **Glossy Paper**
+   - **Quantity Ordered:** 500 sheets
+   - **Unit Price:** $0.17 (after 15% discount)
+   - **Line Total:** $85.00
+
+2. **Cardstock**
+   - **Quantity Ordered:** 300 sheets
+   - **Unit Price:** $0.135 (after 10% discount)
+   - **Line Total:** $40.50
+
+### Grand Total
+- **Total Amount:** $125.50
+
+#### Fulfillment Details
+- **Glossy Paper:** 
+  - **Quantity Fulfilled:** 500 sheets
+  - **Total Price:** $85.00
+  - **Estimated Delivery Date:** April 12, 2025
+
+- **Cardstock:** 
+  - **Quantity Fulfilled:** 300 sheets
+  - **Total Price:** $40.50
+  - **Estimated Delivery Date:** April 12, 2025
+
+**Note:** Both items will be delivered by April 12, 2025, well before your requested delivery date of April 15, 2025. 
+
+If you have any further questions or need additional assistance, please let me know!"
+13,2025-04-08,45607.75,4411.25,"Here is a summary of your order request for the exhibition:
+
+### Quote Breakdown:
+1. **A3 Glossy Paper:**
+   - **Requested Quantity:** 500 sheets
+   - **Discounted Unit Price:** $0.17
+   - **Total Price:** $85.00 (before fulfillment)
+   - **Fulfilled Immediately:** 100 sheets
+   - **Estimated Delivery for Fulfilled Stock:** April 9, 2025
+   - **Back-Ordered:** 400 sheets (estimated delivery: April 12, 2025)
+
+2. **A4 Matte Paper:**
+   - **Requested Quantity:** 300 sheets
+   - **Discounted Unit Price:** $0.162
+   - **Total Price:** $48.60 (before fulfillment)
+   - **Fulfilled Immediately:** 0 sheets (out of stock)
+   - **Back-Ordered:** 300 sheets (estimated delivery: April 9, 2025)
+
+### Total Summary:
+- **Total Fulfilled Immediately:** 100 sheets of A3 Glossy Paper
+- **Total Back-Ordered:** 700 sheets (400 sheets of A3 Glossy Paper and 300 sheets of A4 Matte Paper)
+- **Grand Total for Immediate Shipment:** $20.00 (for the fulfilled Glossy Paper)
+
+### Notes:
+- A restock has been triggered for the back-ordered items.
+- Please expect to receive the fulfilled portion by April 9, 2025, and the back-ordered items are estimated to arrive by April 12, 2025.
+
+If you have any further questions or require additional assistance, please let me know!"
+14,2025-04-09,45607.75,4411.25,"### Order Summary for High-Quality Paper Supplies
+
+**Requested Items:**
+- 5,000 sheets of A4 paper
+- 2,000 sheets of poster paper in various colors
+- 500 sheets of cardstock
+
+**Fulfillment Status:**
+1. **A4 Paper**
+   - **Requested:** 5,000 sheets
+   - **Fulfilled:** 578 sheets
+   - **Transaction ID:** 65
+   - **Total Price (~fulfilled):** $28.90
+   - **Shortfall:** 4,422 sheets back-ordered
+   - **Estimated Delivery for Back-Order:** April 19, 2025
+
+2. **Poster Paper**
+   - **Requested:** 2,000 sheets
+   - **Fulfilled:** 600 sheets
+   - **Transaction ID:** 67
+   - **Total Price (~fulfilled):** $150.00
+   - **Shortfall:** 1,400 sheets back-ordered
+   - **Estimated Delivery for Back-Order:** April 19, 2025
+
+3. **Cardstock**
+   - **Requested:** 500 sheets
+   - **Fulfilled:** 500 sheets
+   - **Transaction ID:** 112
+   - **Total Price:** $75.00
+   - **Shortfall:** None.
+
+### Financial Details
+- **Subtotal for this Order:** $701.25
+- **Total Fulfilled Immediately:** $253.90
+- **Total Back-Ordered:** $447.35 (for 4,422 A4 paper and 1,400 poster paper)
 
 ### Additional Notes:
-- **Colored Construction Paper**: Out of stock.
-- **Poster Board**: Out of stock.
+- A restock order for the shortfall (4,422 A4 sheets and 1,400 poster sheets) has been initiated, and expected delivery is on April 19, 2025.
+- Current **cash balance**: $45,607.75
+- **Inventory value**: $4,411.25
+- **Total assets**: $50,019.00
 
-Since the colored construction paper and poster board are currently out of stock, we won't be able to proceed with your full order as requested. Please let me know if you would like to place an order only for the A4 paper or if you would like to adjust your request in any other way. If you decide to move forward, I can save the quote for the A4 paper!"
-17,2025-04-14,44303.659999999996,4974.3,"Thank you for your order request for the upcoming reception. After checking our inventory, here's what I found:
+If you need any more information or assistance, please let me know!"
+15,2025-04-12,45320.850000000006,4650.15,"### Order Summary for High-Quality Paper Supplies
 
-### Inventory Summary (As of April 14, 2025):
+Thank you for your order! Here are the details regarding your request for the paper supplies for your upcoming demonstration:
 
-- **A4 Paper**
-  - Current Stock: 600
-  - Minimum Stock Level: 135
-  - **Restock Needed:** No
+#### Quote Breakdown
+| Item Name         | Quantity | Original Unit Price | Discount % | Discounted Unit Price | Line Total |
+|--------------------|----------|---------------------|------------|-----------------------|------------|
+| A4 paper           | 10,000   | $0.05               | 15%        | $0.0425               | $425.00    |
+| Colored paper      | 5,000    | $0.10               | 15%        | $0.085                | $425.00    |
+| Cardstock          | 500      | $0.15               | 15%        | $0.1275               | $63.75     |
 
-- **Colored Paper**
-  - Current Stock: 788
-  - Minimum Stock Level: 143
-  - **Restock Needed:** No
+### Grand Total: **$913.75**
 
-- **Paper Napkins**
-  - Current Stock: 600
-  - Minimum Stock Level: 100
-  - **Restock Needed:** No
+#### Fulfilled Quantities:
+1. **A4 Paper**
+   - **Requested**: 10,000 sheets
+   - **Fulfilled**: 600 sheets
+   - **Shortfall**: 9,400 sheets back-ordered
+   - **Delivery for fulfilled quantity**: Estimated by **April 19, 2025**.
+   - **Estimated delivery for back-order**: April 22, 2025 (restocked 600 sheets on April 26, but still short)
 
-- **Paper Cups**
-  - Current Stock: 0
-  - Minimum Stock Level: 100
-  - **Restock Needed:** Yes
-  - Action Taken: Restocked 600 units
-  - Total Cost: $48.00
-  - Estimated Delivery: April 18, 2025
+2. **Colored Paper**
+   - **Requested**: 5,000 sheets
+   - **Fulfilled**: 600 sheets
+   - **Shortfall**: 4,400 sheets back-ordered
+   - **Delivery for fulfilled quantity**: Estimated by **April 19, 2025**.
+   - **Estimated delivery for back-order**: April 22, 2025
 
-- **Paper Plates**
-  - Current Stock: 748
-  - Minimum Stock Level: 144
-  - **Restock Needed:** No
+#### Back-Order Items:
+- **A4 Paper**: 9,400 sheets with an estimated arrival date of **April 26, 2025**.
+- **Colored Paper**: 4,400 sheets with an estimated arrival date of **April 22, 2025**.
 
-### Summary of Actions:
-- **Restocked Paper Cups:** 600 units ordered (total cost $48.00).
+**Note**: The cardstock could not be processed due to insufficient stock. Please adjust or confirm your order to proceed.
 
-Unfortunately, we cannot fulfill the entire order for the other items at this time since they are unavailable. Although we've restocked paper cups, we currently have sufficient stocks of A4 paper, colored paper, and table napkins.
+If you have any further adjustments or questions regarding your order, feel free to reach out!"
+16,2025-04-13,45352.850000000006,4625.15,"Here’s a summary of your order request and fulfillment status:
 
-Would you like me to help you modify your order or check for alternative products? Your delivery for the paper cups is scheduled for April 18, 2025. Thank you!"
-18,2025-04-14,44303.659999999996,4974.3,"It appears that, as of April 14, 2025, the following stock levels were available:
+### Quote Breakdown
+| Item Name                                         | Quantity | Base Unit Price | Discount % | Discounted Unit Price | Line Total |
+|---------------------------------------------------|----------|------------------|------------|-----------------------|------------|
+| A4 paper (Available on 2025-04-19)                | 500      | $0.05           | 15%        | $0.0425               | $21.25     |
+| Colored construction paper (Available on 2025-04-19) | 200      | $0.10           | 10%        | $0.09                 | $18.00     |
+| Poster paper (Available on 2025-04-19)            | 100      | $0.25           | 10%        | $0.225                | $22.50     |
 
-1. **Cardstock**: 695 sheets (No restocking needed)
-2. **Standard Copy Paper**: 300 sheets (No restocking needed)
-3. **Colored Paper**: 788 sheets (No restocking needed)
+### Fulfillment Status:
+1. **A4 Paper**:
+   - **Requested**: 500 sheets
+   - **Fulfilled**: 500 sheets
+   - **Estimated Delivery**: April 17, 2025
+   - **Total Price**: $25.00
+  
+2. **Colored Construction Paper**:
+   - **Requested**: 200 sheets
+   - **Fulfilled**: 100 sheets
+   - **Back-ordered**: 100 sheets (Pending restock)
+   - **Estimated Delivery for fulfilled**: April 14, 2025
+   - **Total Price**: $7.00
 
-However, it seems there was an issue with generating a quote for the requested high-quality white cardstock and standard printing paper, as the specific items you requested may not have been available in the inventory based on the date provided. 
+3. **Poster Paper**:
+   - **Requested**: 100 sheets
+   - **Fulfilled**: 0 sheets
+   - **Back-ordered**: 100 sheets (Pending restock)
+   - **Estimated Delivery**: April 20, 2025
+   - **Total Price**: $22.50
 
-Since you requested 500 sheets of high-quality white cardstock, 1000 sheets of standard printing paper, and 200 sheets of colored paper, it may be necessary to choose different items or adjust the quantities in order to proceed. 
+### Summary of Deliveries:
+- **A4 Paper**: 500 sheets will be delivered by **April 17, 2025**.
+- **Colored Construction Paper**: 100 sheets delivered by **April 14, 2025**; remaining 100 sheets are back-ordered with an expected delivery on **April 19, 2025**.
+- **Poster Paper**: All 100 sheets are back-ordered with an expected delivery on **April 20, 2025**.
 
-Please let me know how you would like to adjust your order or if I can assist you further!"
-19,2025-04-15,44303.659999999996,4974.3,"It seems that we currently have no stock available for the requested items: A4 glossy paper, A3 matte paper, and cardstock. Unfortunately, I was unable to generate a quote for these items as they are not recognized in our inventory under those names.
+If you have any questions or need assistance, feel free to ask!"
+17,2025-04-14,45462.850000000006,4525.15,"Here's a summary of your order for the upcoming reception, including the fulfilled items and back-orders. 
 
-Here’s a brief summary of the situation:
+### Quote Breakdown:
+- **Colored Paper (500 sheets)**
+  - Item Price: $0.10
+  - Discount: 15%
+  - Discounted Price: $0.085
+  - **Total for Colored Paper: $42.50**
+  
+- **Paper Napkins (2000 sheets)**
+  - Item Price: $0.02
+  - Discount: 15%
+  - Discounted Price: $0.017
+  - **Total for Paper Napkins: $34.00**
 
-### Current Stock Levels (as of 2025-04-15)
-- **A4 glossy paper**: 0 (Min stock level: 100) - Needs restock
-- **A3 matte paper**: 0 (Min stock level: 100) - Needs restock
-- **Cardstock**: 0 (Min stock level: 100) - Needs restock
+- **Paper Cups (1000 sheets)**
+  - Item Price: $0.08
+  - Discount: 15%
+  - Discounted Price: $0.068
+  - **Total for Paper Cups: $68.00**
 
-### Financial Status
-- Current cash balance: $44,303.66 (sufficient to support restocking)
+- **Paper Plates (500 sheets)**
+  - Item Price: $0.10
+  - Discount: 15%
+  - Discounted Price: $0.085
+  - **Total for Paper Plates: $42.50**
 
-### Restocking Actions
-- **Restock Attempts**: Failed for all requested items as they are recognized as unknown.
+### Grand Total: $187.00
 
-Unfortunately, without the correct item names or availability, we cannot proceed with the order. If you have alternative names for the items or would like to explore similar products in our catalog, please let me know!"
-20,2025-04-17,44303.659999999996,4974.3,"It seems that we currently have no stock available for flyers, posters, or tickets as of April 17, 2025. Unfortunately, this means I'm unable to generate a detailed quote for the requested quantities of 5,000 flyers, 2,000 posters, and 10,000 tickets.
+### Fulfillment Summary:
+- **Fulfilled Immediately:**
+  - **Colored Paper:** 500 sheets delivered by April 18, 2025
+  - **Paper Plates:** 500 sheets delivered by April 18, 2025
+  - **Total Amount:** $92.50 (Colored Paper + Paper Plates) 
 
-All three items are below their minimum stock levels and require restocking. However, there was an issue recognizing the item names for restocking.
+- **Back-Ordered:**
+  - **Paper Napkins:** 1500 sheets (Delivery by April 21, 2025)
+  - **Paper Cups:** 600 sheets (Delivery by April 18, 2025)
 
-If you would like to modify your request or explore alternative options, please let me know how I can assist you further!"
+### Additional Notes:
+- **A4 Paper:** Restocked and available for delivery on April 19, 2025.
+- 600 units of **Paper Napkins** were also restocked, with an estimated delivery date of April 25, 2025.
+
+If you have any further questions or need more assistance, feel free to reach out!"
+18,2025-04-14,45501.850000000006,4490.15,"### Order Summary for Upcoming Ceremony
+
+**Order Date:** April 14, 2025  
+**Requested Delivery Date:** April 15, 2025  
+
+#### **Quotation Breakdown:**
+1. **Cardstock**
+   - **Quantity:** 500 sheets
+   - **Discounted Unit Price:** $0.1275
+   - **Total Price:** $63.75
+   - **Status:** Fulfilled
+   - **Estimated Delivery Date:** April 18, 2025
+
+2. **Standard Copy Paper**
+   - **Quantity:** 1000 sheets
+   - **Discounted Unit Price:** $0.034
+   - **Total Price for Fulfilled Quantity (100 sheets):** $4.00
+   - **Status:** Partially Fulfilled
+   - **Back-Ordered:** 900 sheets
+   - **Estimated Delivery Date for back-order:** April 18, 2025
+
+3. **Colored Paper (Assorted Colors)**
+   - **Quantity:** 200 sheets
+   - **Discounted Unit Price:** $0.09
+   - **Total Price:** $18.00
+   - **Status:** Fulfilled
+   - **Estimated Delivery Date:** April 18, 2025
+
+### **Grand Total**
+- **Total Amount:** $85.75
+
+### **Delivery Overview**
+- **Cardstock:** Delivered by April 18, 2025
+- **Standard Copy Paper:** 100 sheets will be delivered by April 15, 2025; 900 sheets back-ordered, estimated delivery by April 18, 2025.
+- **Colored Paper:** Delivered by April 18, 2025
+
+
+Thank you for your order! If you have any further questions or requests, feel free to reach out."
+19,2025-04-15,45202.75000000001,4321.249999999999,[CARTA error: Request timed out.]
+20,2025-04-17,45601.75000000001,3922.2499999999995,"### Order Summary for Concert Supplies
+
+**Request Date:** April 17, 2025  
+**Desired Delivery Date:** May 15, 2025
+
+#### **Items Ordered:**
+1. **Flyers**
+   - **Requested:** 5,000
+   - **Fulfilled:** 0
+   - **Back-ordered:** 5,000
+   - **Availability Date:** April 28, 2025
+
+2. **Large Poster Paper (24x36 inches)**
+   - **Requested:** 2,000
+   - **Fulfilled:** 399
+   - **Back-ordered:** 1,601
+   - **Availability Date:** April 28, 2025
+
+3. **Tickets**
+   - Unable to provide pricing. Please specify the ticket type for further assistance.
+
+#### **Total Costs:**
+- **Total for Flyers (0 fulfilled):** $0.00  
+- **Total for Large Poster Paper:** $399.00 (for 399 units fulfilled)  
+- **Total for Back-ordered Flyers:** Not yet billable as they’re back-ordered.  
+- **Total for Back-ordered Large Poster Paper:** Not yet billable as they’re back-ordered.  
+
+### **Overall Totals:**
+- **Subtotal for fulfilled items:** $399.00
+- **Total for Back-ordered items (not specified):** Total price for back-orders will be provided once items are fulfilled.
+  
+### **Next Steps:**
+- Once the back-ordered items arrive on **April 28, 2025**, I will update you on the fulfillment and any additional pricing required.
+
+If you have further instructions or require assistance with the ticket quotation, please let me know!"

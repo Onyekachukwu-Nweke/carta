@@ -588,6 +588,8 @@ def search_quote_history(search_terms: List[str], limit: int = 5) -> List[Dict]:
 ########################
 ########################
 
+import difflib
+
 from pydantic_ai import Agent
 from pydantic_ai.models.openai import OpenAIModel
 from pydantic_ai.providers.openai import OpenAIProvider
@@ -621,6 +623,88 @@ def _apply_bulk_discount(unit_price: float, quantity: int) -> float:
     return unit_price
 
 
+# Words too generic to distinguish between catalog items.
+_STOP_WORDS = {"a4", "a3", "a5", "a6", "paper", "sheet", "sheets", "of", "the", "and", "in", "with", "high", "quality"}
+
+def _find_catalog_match(customer_term: str) -> tuple:
+    """
+    Three-stage fuzzy match: exact → sequence ratio → keyword Jaccard.
+    Returns (canonical_name, confidence) or (None, 0.0).
+    """
+    catalog_names = list(_price_map.keys())
+    term_lower = customer_term.lower().strip()
+
+    # Stage 1: case-insensitive exact
+    for name in catalog_names:
+        if name.lower() == term_lower:
+            return name, 1.0
+
+    # Stage 2: difflib sequence ratio with a keyword-confirmation guard.
+    # High threshold (0.65) plus we require at least one significant word from the
+    # customer term to appear in the matched name — prevents "printer paper" matching
+    # "Poster paper" because both share the " paper" suffix.
+    seq_scores = sorted(
+        ((n, difflib.SequenceMatcher(None, term_lower, n.lower()).ratio()) for n in catalog_names),
+        key=lambda x: -x[1],
+    )
+    top_name, top_score = seq_scores[0]
+    if top_score >= 0.65:
+        term_sig = {w for w in term_lower.split() if w not in _STOP_WORDS and len(w) >= 4}
+        top_sig = {w for w in top_name.lower().split() if w not in _STOP_WORDS and len(w) >= 4}
+        if not term_sig or (term_sig & top_sig):
+            return top_name, round(top_score, 2)
+
+    # Stage 3: Jaccard on significant words
+    # e.g. "A4 glossy paper" → {"glossy"} matches "Glossy paper" → {"glossy"}
+    term_words = {w for w in term_lower.split() if w not in _STOP_WORDS and len(w) >= 4}
+    if term_words:
+        word_scores = []
+        for name in catalog_names:
+            name_words = {w for w in name.lower().split() if w not in _STOP_WORDS and len(w) >= 4}
+            if not name_words:
+                continue
+            intersection = term_words & name_words
+            union = term_words | name_words
+            score = len(intersection) / len(union)
+            # Boost when all customer keywords appear in the name
+            if intersection == term_words:
+                score = min(score + 0.25, 1.0)
+            word_scores.append((name, score))
+        word_scores.sort(key=lambda x: -x[1])
+        if word_scores and word_scores[0][1] >= 0.3:
+            return word_scores[0][0], round(word_scores[0][1], 2)
+
+    # Stage 4: substring containment fallback
+    for name in catalog_names:
+        name_lower = name.lower()
+        if name_lower in term_lower or term_lower in name_lower:
+            return name, 0.5
+
+    return None, 0.0
+
+
+def disambiguate_item_name(customer_item_name: str) -> dict:
+    """
+    Map a customer-provided item description to the nearest canonical catalog name.
+    Always call this before any inventory, price, or fulfillment tool.
+    """
+    canonical, confidence = _find_catalog_match(customer_item_name)
+    if canonical:
+        return {
+            "matched": True,
+            "canonical_name": canonical,
+            "confidence": confidence,
+            "unit_price": _price_map[canonical],
+        }
+    suggestions = difflib.get_close_matches(customer_item_name, list(_price_map.keys()), n=3, cutoff=0.2)
+    return {
+        "matched": False,
+        "canonical_name": None,
+        "confidence": 0.0,
+        "suggestions": suggestions or [],
+    }
+
+
 # ── Inventory Agent ───────────────────────────────────────────────────────────
 
 inventory_agent = Agent(
@@ -628,12 +712,17 @@ inventory_agent = Agent(
     name="inventory_agent",
     system_prompt=(
         "You are the Inventory Specialist for Munder Difflin Paper Company. "
-        "Check stock levels, flag items below their minimum, and restock when needed. "
-        "Use exact item names from the catalog. When restocking, always call "
-        "check_cash_balance first — only restock if the company can afford it. "
-        "When restocking, order enough to bring stock to at least 600 units above the current level."
+        "IMPORTANT: For every item name received from the customer, call disambiguate_item_name "
+        "first to resolve it to the exact catalog name before any other tool call. "
+        "Then check stock levels and restock when needed. "
+        "Before restocking, always call check_cash_balance to confirm the company can afford it. "
+        "When restocking, order enough to bring stock to at least 600 units above the current level. "
+        "Return a structured summary listing: canonical item name, current stock, whether it was "
+        "restocked, restocked quantity, and estimated delivery date."
     ),
 )
+
+inventory_agent.tool_plain(disambiguate_item_name)
 
 
 @inventory_agent.tool_plain
@@ -693,12 +782,18 @@ quote_agent = Agent(
     name="quote_agent",
     system_prompt=(
         "You are the Quoting Specialist for Munder Difflin Paper Company. "
+        "IMPORTANT: For every item name, call disambiguate_item_name first to get the canonical name "
+        "before calling any other tool. "
         "Generate accurate quotes by referencing historical quote data and applying bulk discounts: "
         "5% for ≥50 units, 10% for ≥100 units, 15% for ≥500 units. "
-        "Always provide a clear line-item breakdown with base price, discount, discounted unit price, and grand total. "
-        "After producing the quote, always call save_quote to persist it to the database."
+        "If an item was recently restocked (indicated in the request), quote it as available with "
+        "a note that delivery will be on the restock delivery date. "
+        "Always provide a clear line-item breakdown with base price, discount %, discounted unit price, "
+        "and grand total. After producing the quote, always call save_quote to persist it."
     ),
 )
+
+quote_agent.tool_plain(disambiguate_item_name)
 
 
 @quote_agent.tool_plain
@@ -762,12 +857,18 @@ order_agent = Agent(
     name="order_agent",
     system_prompt=(
         "You are the Order Fulfillment Specialist for Munder Difflin Paper Company. "
-        "For each item in the order: call verify_stock, then call lookup_item_price to get the unit price "
-        "(use the discounted price from the order details if provided, otherwise use the catalog price), "
-        "then call fulfill_order to record the sale, and call check_delivery_timeline for the ETA. "
-        "If stock is insufficient for an item, report it clearly but continue with the remaining items."
+        "IMPORTANT: For every item name, call disambiguate_item_name first to get the canonical name. "
+        "For each item: call verify_stock, then call lookup_item_price (use discounted price if provided, "
+        "otherwise use catalog price), then call fulfill_order to record the sale, and "
+        "call check_delivery_timeline for the ETA. "
+        "PARTIAL FULFILLMENT: If available stock is less than requested, fulfill the available quantity "
+        "immediately via fulfill_order, then clearly report the shortfall quantity as a back-order "
+        "(e.g. '228 units back-ordered — restock pending, delivery in 4 days'). "
+        "Continue processing all other items even if one has insufficient stock."
     ),
 )
+
+order_agent.tool_plain(disambiguate_item_name)
 
 
 @order_agent.tool_plain
@@ -830,16 +931,20 @@ carta = Agent(
     system_prompt=(
         "You are CARTA — Customer Agent for Reordering, Trading & Automation — the central "
         "orchestration system for Munder Difflin Paper Company.\n\n"
-        "For every customer request, follow this exact sequence:\n"
-        "1. Call call_inventory_agent with the list of requested items and the date to check stock "
-        "   and trigger restocking for any low items.\n"
-        "2. Call call_quote_agent with the full customer request and date to generate a detailed "
-        "   discount-aware quote. The quote agent will also save the quote to the database.\n"
-        "3. Call call_order_agent passing the item names, quantities, and discounted prices from "
-        "   the quote (e.g. 'Item: A4 paper, qty: 500, discounted_unit_price: $0.0425') and the date "
-        "   to record the sales transactions.\n"
-        "4. Optionally call get_financial_report to include updated financials in your response.\n"
-        "5. Return a friendly, professional summary with the quote breakdown, total, and delivery dates.\n\n"
+        "For every customer request follow these steps:\n"
+        "1. Call call_inventory_agent with the requested items and date. It will check stock and "
+        "   restock low items. Note which items were restocked and their delivery dates.\n"
+        "2. Call call_quote_agent with the full customer request, date, AND a note listing any "
+        "   restocked items with their delivery dates, so the quote agent can price them as "
+        "   'available by [date]' rather than refusing to quote.\n"
+        "3. Call call_order_agent with the item names, quantities, and discounted prices from the "
+        "   quote, and the date. It will fulfill available stock immediately and report any "
+        "   back-order shortfalls.\n"
+        "4. If call_order_agent reports back-order shortfalls, call call_inventory_agent again "
+        "   with only those items to trigger restocking of the exact shortfall quantities.\n"
+        "5. Optionally call get_financial_report for an updated financial snapshot.\n"
+        "6. Return a clear, professional summary: quote breakdown with discounts, what was fulfilled "
+        "   immediately, what is back-ordered and when it will arrive.\n\n"
         f"Product catalog (use exact item names):\n{_catalog}"
     ),
 )
@@ -858,13 +963,19 @@ def call_inventory_agent(items: List[str], date: str) -> str:
 
 
 @carta.tool_plain
-def call_quote_agent(request: str, date: str) -> str:
-    """Delegate quote generation to the Quote Agent."""
+def call_quote_agent(request: str, date: str, restock_notes: str = "") -> str:
+    """Delegate quote generation to the Quote Agent.
+
+    restock_notes: optional string describing items just restocked and their delivery dates,
+    so the quote agent can price them as available-by-date rather than out-of-stock.
+    """
+    restock_section = f"\nRestock context: {restock_notes}" if restock_notes else ""
     prompt = (
-        f"Date: {date}.\nCustomer request: {request}\n"
+        f"Date: {date}.\nCustomer request: {request}{restock_section}\n"
         "Search quote history for comparable orders, then produce a detailed quote "
         "with bulk discounts, showing: item name, quantity, base unit price, discount %, "
-        "discounted unit price, and line total. Include the grand total at the end. "
+        "discounted unit price, and line total. Include the grand total. "
+        "For restocked items, quote them as available on their delivery date. "
         "After generating the quote, call save_quote to persist it."
     )
     result = quote_agent.run_sync(prompt)
